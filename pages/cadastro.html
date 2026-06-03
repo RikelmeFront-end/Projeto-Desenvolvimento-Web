@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — BuyNow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="../index.html" class="logo">
+        <img src="../images/icons/icons8-mac-os-32.ico" alt="BuyNow">
+        <span>BuyNow</span>
+      </a>
+
+      <ul class="menu" id="menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <i class="fa-solid fa-bars menu-toggle" id="botao-menu"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pagina-interna">
+    <section class="conteudo-pagina">
+      <div class="container auth-box">
+        <h1>Criar conta</h1>
+        <p class="auth-texto">Cadastra aqui. Por enquanto fica salvo no navegador, depois ligo no banco.</p>
+
+        <form class="auth-form" id="form-cadastro">
+          <div class="form-group">
+            <label for="cad-nome">Nome</label>
+            <input type="text" id="cad-nome" name="nome" placeholder="Seu nome">
+            <span class="form-error" id="erro-cad-nome"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="cad-email">E-mail</label>
+            <input type="email" id="cad-email" name="email" placeholder="seu@email.com">
+            <span class="form-error" id="erro-cad-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="cad-senha">Senha</label>
+            <input type="password" id="cad-senha" name="senha" placeholder="Mínimo 4 caracteres">
+            <span class="form-error" id="erro-cad-senha"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="cad-confirma">Confirmar senha</label>
+            <input type="password" id="cad-confirma" name="confirma" placeholder="Repita a senha">
+            <span class="form-error" id="erro-cad-confirma"></span>
+          </div>
+
+          <button type="submit" class="btn-primary btn-full">Criar conta</button>
+        </form>
+
+        <p class="auth-link">
+          Já tem conta? <a href="login.html">Entrar</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 BuyNow</p>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>
