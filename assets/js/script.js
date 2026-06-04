@@ -65,7 +65,7 @@ function irParaLogin() {
   window.location.href = urlLogin();
 }
 
-// mostra carrinho e nome so se tiver logado
+// carrinho e botoes de login so aparecem logado
 function atualizarNavbar() {
   var navAuth = document.getElementById("nav-auth");
   var navLogado = document.getElementById("nav-logado");
@@ -74,17 +74,17 @@ function atualizarNavbar() {
 
   if (navAuth) {
     if (logado) {
-      navAuth.hidden = true;
+      navAuth.classList.add("escondido");
     } else {
-      navAuth.hidden = false;
+      navAuth.classList.remove("escondido");
     }
   }
 
   if (navLogado) {
     if (logado) {
-      navLogado.hidden = false;
+      navLogado.classList.add("ativo");
     } else {
-      navLogado.hidden = true;
+      navLogado.classList.remove("ativo");
     }
   }
 
@@ -118,7 +118,6 @@ var botoesCarrinho = document.querySelectorAll(".add-cart");
 for (var i = 0; i < botoesCarrinho.length; i++) {
   botoesCarrinho[i].addEventListener("click", function () {
     if (!estaLogado()) {
-      alert("Faça login ou crie uma conta pra comprar.");
       irParaLogin();
       return;
     }
@@ -224,7 +223,6 @@ if (formCadastro) {
     });
 
     salvarUsuarios(usuarios);
-    alert("Conta criada! Agora é só entrar.");
     window.location.href = "login.html";
   });
 }
