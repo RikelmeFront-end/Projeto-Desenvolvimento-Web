@@ -569,6 +569,14 @@ footer {
     color: white;
     padding: 40px 20px;
 }
+footer.login {
+    display: flex;
+    width: auto;
+    height: auto;
+    background-color: #eef1f6;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+}
 
 .footer-container {
     display: flex;
