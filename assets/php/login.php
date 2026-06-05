@@ -22,4 +22,4 @@ if ($result->num_rows > 0) {
     header("Location: ../../pages/login.php?erro=1");
     exit();
 }
-?>
+?>  
