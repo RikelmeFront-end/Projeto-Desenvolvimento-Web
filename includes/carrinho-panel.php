@@ -18,5 +18,6 @@
       <span>Total</span>
       <strong id="carrinho-total">R$ 0,00</strong>
     </div>
+    <a href="#" class="btn-finalizar-compra" id="btn-finalizar-compra" hidden>Finalizar compra</a>
   </div>
 </aside>

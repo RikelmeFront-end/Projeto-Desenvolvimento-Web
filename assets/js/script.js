@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   initMenuMobile();
   initCarrinho();
+  initCheckout();
   initBuscaProdutos();
   initFormContato();
 });
@@ -23,6 +24,12 @@ function getLoginPath() {
   return window.location.pathname.includes("/pages/")
     ? "login.php"
     : "./pages/login.php";
+}
+
+function getCheckoutPath() {
+  return window.location.pathname.includes("/pages/")
+    ? "checkout.php"
+    : "./pages/checkout.php";
 }
 
 function getCarrinho() {
@@ -91,6 +98,15 @@ function atualizarContadorCarrinho() {
   contador.classList.toggle("vazio", total === 0);
 }
 
+function atualizarBotaoCheckout() {
+  const btn = document.getElementById("btn-finalizar-compra");
+  if (!btn) return;
+
+  const temItens = getCarrinho().length > 0;
+  btn.hidden = !temItens;
+  btn.href = getCheckoutPath();
+}
+
 function renderizarCarrinho() {
   const lista = document.getElementById("carrinho-itens");
   const totalEl = document.getElementById("carrinho-total");
@@ -101,6 +117,7 @@ function renderizarCarrinho() {
   if (itens.length === 0) {
     lista.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
     if (totalEl) totalEl.textContent = "R$ 0,00";
+    atualizarBotaoCheckout();
     return;
   }
 
@@ -128,6 +145,7 @@ function renderizarCarrinho() {
   }).join("");
 
   if (totalEl) totalEl.textContent = formatarPreco(total);
+  atualizarBotaoCheckout();
 }
 
 function adicionarAoCarrinho(produto) {
@@ -187,6 +205,11 @@ function initCarrinho() {
       return;
     }
 
+    if (e.target.closest("#btn-finalizar-compra")) {
+      fecharCarrinho();
+      return;
+    }
+
     const btnAdd = e.target.closest(".add-cart");
     if (!btnAdd) return;
 
@@ -226,6 +249,111 @@ function initCarrinho() {
   });
 
   atualizarContadorCarrinho();
+  atualizarBotaoCheckout();
+}
+
+function initCheckout() {
+  const form = document.getElementById("form-checkout");
+  const lista = document.getElementById("checkout-itens");
+  if (!form || !lista) return;
+
+  const itens = getCarrinho();
+
+  if (itens.length === 0) {
+    window.location.href = window.location.pathname.includes("/pages/")
+      ? "produtos.php"
+      : "./pages/produtos.php";
+    return;
+  }
+
+  let total = 0;
+
+  lista.innerHTML = itens.map((item) => {
+    total += item.precoNum * item.qtd;
+    return `
+      <div class="checkout-item">
+        <img src="${item.imagem}" alt="${item.nome}">
+        <div>
+          <h4>${item.nome}</h4>
+          <p>${item.qtd}x ${item.preco}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const totalFormatado = formatarPreco(total);
+  document.getElementById("checkout-total").textContent = totalFormatado;
+  document.getElementById("checkout-itens-json").value = JSON.stringify(itens);
+  document.getElementById("checkout-total-input").value = totalFormatado;
+
+  const erros = {
+    nome: form.querySelector("[data-error='nome']"),
+    email: form.querySelector("[data-error='email']"),
+    telefone: form.querySelector("[data-error='telefone']"),
+    cep: form.querySelector("[data-error='cep']"),
+    endereco: form.querySelector("[data-error='endereco']"),
+    numero: form.querySelector("[data-error='numero']"),
+    cidade: form.querySelector("[data-error='cidade']"),
+    estado: form.querySelector("[data-error='estado']")
+  };
+
+  form.addEventListener("submit", (e) => {
+    const nome = form.nome.value.trim();
+    const email = form.email.value.trim();
+    const telefone = form.telefone.value.trim();
+    const cep = form.cep.value.trim();
+    const endereco = form.endereco.value.trim();
+    const numero = form.numero.value.trim();
+    const cidade = form.cidade.value.trim();
+    const estado = form.estado.value.trim();
+    let valido = true;
+
+    Object.values(erros).forEach((el) => { if (el) el.textContent = ""; });
+
+    if (nome.length < 2) {
+      erros.nome.textContent = "Informe seu nome completo.";
+      valido = false;
+    }
+
+    if (!email.includes("@")) {
+      erros.email.textContent = "E-mail inválido.";
+      valido = false;
+    }
+
+    if (telefone.length < 8) {
+      erros.telefone.textContent = "Informe um telefone válido.";
+      valido = false;
+    }
+
+    if (cep.length < 8) {
+      erros.cep.textContent = "Informe um CEP válido.";
+      valido = false;
+    }
+
+    if (endereco.length < 3) {
+      erros.endereco.textContent = "Informe o endereço.";
+      valido = false;
+    }
+
+    if (numero.length < 1) {
+      erros.numero.textContent = "Informe o número.";
+      valido = false;
+    }
+
+    if (cidade.length < 2) {
+      erros.cidade.textContent = "Informe a cidade.";
+      valido = false;
+    }
+
+    if (estado.length < 2) {
+      erros.estado.textContent = "Informe o estado (UF).";
+      valido = false;
+    }
+
+    if (!valido) {
+      e.preventDefault();
+    }
+  });
 }
 
 function initBuscaProdutos() {
