@@ -33,7 +33,10 @@ botoesCarrinho.forEach(btn => {
     const usuario = document.querySelector(".nome-user");
 
     if (!usuario) {
-      window.location.href = "./pages/login.html";
+      const loginPath = window.location.pathname.includes("/pages/")
+        ? "login.html"
+        : "./pages/login.html";
+      window.location.href = loginPath;
       return;
     }
 

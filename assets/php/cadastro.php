@@ -1,16 +1,29 @@
 <?php
 include "conexao.php";
 
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$senha = $_POST['senha'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-$sql = "INSERT INTO usuarios (nome, email, senha)
-VALUES ('$nome', '$email', '$senha')";
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
 
-if ($conn->query($sql)) {
-    echo "Cadastrado com sucesso!";
+    if ($nome == '' || $email == '' || $senha == '') {
+        echo "Preencha todos os campos!";
+        exit;
+    }
+
+    $sql = "INSERT INTO usuarios (nome, email, senha)
+            VALUES ('$nome', '$email', '$senha')";
+
+    if ($conn->query($sql)) {
+        header("Location: ../../pages/login.html");
+        exit;
+    } else {
+        echo "Erro: " . $conn->error;
+    }
+
 } else {
-    echo "Erro: " . $conn->error;
+    header("Location: ../../pages/cadastro.html");
+    exit;
 }
-?>  
+?>

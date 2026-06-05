@@ -13,39 +13,11 @@
 </head>
 <body>
 
-  <header>
-    <nav class="navbar">
-      <a href="index.php" class="logo">
-        <img src="./images/icons/icons8-mac-os-32.ico" alt="BuyNow">
-        <span>BuyNow</span>
-      </a>
-
-      <ul class="menu" id="menu">
-        <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="./pages/produtos.html">Produtos</a></li>
-        <li><a href="./pages/sobre.html">Sobre</a></li>
-        <li><a href="./pages/contato.html">Contato</a></li>
-      </ul>
-
-      <div class="nav-right">
-
-        <?php if (isset($_SESSION['usuario_nome'])): ?>
-
-          <span class="nome-user">👋 <?php echo $_SESSION['usuario_nome']; ?></span>
-          <a href="./logout.php" class="btn-entrar">Sair</a>
-
-        <?php else: ?>
-
-          <a href="./pages/cadastro.html" class="btn-criar">Criar conta</a>
-          <a href="./pages/login.html" class="btn-entrar">Entrar</a>
-
-        <?php endif; ?>
-
-
-        <i class="fa-solid fa-bars menu-toggle" id="botao-menu"></i>
-      </div>
-    </nav>
-  </header>
+  <?php
+  $basePath = '';
+  $paginaAtiva = 'home';
+  include __DIR__ . '/includes/navbar.php';
+  ?>
 
   <main>
     <section class="hero">
@@ -55,7 +27,7 @@
           <p>
             Os melhores componentes para seu PC com performance extrema, design moderno e tecnologia de última geração.
           </p>
-          <a href="./pages/produtos.html" class="btn-hero">Explorar Produtos</a>
+          <a href="./pages/produtos.php" class="btn-hero">Explorar Produtos</a>
         </div>
 
         <div class="imagem-direita">
@@ -119,29 +91,7 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Sobre Nós</h3>
-        <p>
-          A BuyNow é uma loja online de peças de informática...
-        </p>
-      </div>
-
-      <div class="footer-section">
-        <h3>Links Rápidos</h3>
-        <ul>
-          <li><a href="pages/sobre.html">Sobre</a></li>
-          <li><a href="pages/produtos.html">Produtos</a></li>
-          <li><a href="pages/contato.html">Contato</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 BuyNow. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+  <?php include __DIR__ . '/includes/footer.php'; ?>
 
   <script src="./assets/js/script.js"></script>
 </body>
