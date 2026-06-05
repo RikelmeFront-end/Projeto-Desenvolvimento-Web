@@ -1,7 +1,5 @@
 <?php
-if (!isset($basePath)) {
-  $basePath = '';
-}
+$basePath = $basePath ?? '';
 ?>
 <footer class="footer">
   <div class="footer-container">

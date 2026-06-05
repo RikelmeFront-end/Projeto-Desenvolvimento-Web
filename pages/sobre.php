@@ -52,6 +52,6 @@
 
   <?php include __DIR__ . '/../includes/footer.php'; ?>
 
-  <script src="../assets/js/script.js?v=2"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>

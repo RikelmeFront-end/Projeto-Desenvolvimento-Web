@@ -41,7 +41,6 @@
         <h2 class="titulo-ofertas">Ofertas da Semana</h2>
 
         <div class="ofertas-semana">
-          <div class="ofertas-semana">
           <div class="card-oferta">
             <span class="badge">-20%</span>
             <img src="./images/produtosOfertas/headset-gamer-hyperx-cloud-stinger-2-drivers-50mm-preto-519t1aa_1689972862_gg.png" alt="Headset Gamer HyperX Cloud">
@@ -86,13 +85,12 @@
             <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </div>
         </div>
-        </div>
       </div>
     </section>
   </main>
 
   <?php include __DIR__ . '/includes/footer.php'; ?>
 
-  <script src="./assets/js/script.js?v=2"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>

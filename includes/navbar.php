@@ -1,10 +1,6 @@
 <?php
-if (!isset($basePath)) {
-  $basePath = '';
-}
-if (!isset($paginaAtiva)) {
-  $paginaAtiva = '';
-}
+$basePath = $basePath ?? '';
+$paginaAtiva = $paginaAtiva ?? '';
 ?>
 <header>
   <nav class="navbar">
@@ -22,7 +18,7 @@ if (!isset($paginaAtiva)) {
 
     <div class="nav-right">
       <?php if (isset($_SESSION['usuario_nome'])): ?>
-        <input type="hidden" id="usuario-logado" value="1">
+        <input type="hidden" id="usuario-logado">
         <div class="nav-logado">
           <span class="nome-user"><?php echo htmlspecialchars($_SESSION['usuario_nome']); ?></span>
           <button type="button" class="cart-btn" id="btn-carrinho" aria-label="Abrir carrinho">

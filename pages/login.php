@@ -36,10 +36,10 @@
     <section class="conteudo-pagina">
       <div class="container auth-box">
         <h1>Entrar</h1>
-        <p class="auth-texto">Logue para prosseguir com a compra.</p>
+        <p class="auth-texto">Faça login para continuar comprando.</p>
 
         <?php if (isset($_GET['erro']) && $_GET['erro'] === '1'): ?>
-          <div class="auth-erro">Email ou senha incorretos! Tente novamente.</div>
+          <div class="auth-erro">E-mail ou senha incorretos. Tente novamente.</div>
         <?php endif; ?>
 
         <form class="auth-form" action="../assets/php/login.php" method="POST">
@@ -64,7 +64,7 @@
   </main>
 
   <footer class="login">
-    <p>© 2026 BuyNow. Todos os Direitos Reservados.</p>
+    <p>© 2026 BuyNow. Todos os direitos reservados.</p>
   </footer>
 
   <script src="../assets/js/script.js"></script>

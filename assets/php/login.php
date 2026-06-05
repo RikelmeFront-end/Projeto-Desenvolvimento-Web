@@ -16,10 +16,6 @@ if ($result->num_rows > 0) {
 
     header("Location: ../../index.php");
     exit;
-
-} else {
-    // Redirect com parâmetro de erro
-    header("Location: ../../pages/login.php?erro=1");
-    exit();
 }
-?>  
+header("Location: ../../pages/login.php?erro=1");
+exit;
