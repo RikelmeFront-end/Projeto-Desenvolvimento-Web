@@ -29,3 +29,5 @@ if (!isset($basePath)) {
     <p>© 2026 BuyNow. Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<?php include __DIR__ . '/carrinho-panel.php'; ?>

@@ -43,7 +43,7 @@
               <i class="fa-solid fa-star-half"></i>
             </div>
             <p class="preco">R$ 169,90</p>
-            <button class="add-cart">Adicionar ao Carrinho</button>
+            <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </article>
 
           <article class="produto-item">
@@ -57,7 +57,7 @@
               <i class="fa-solid fa-star"></i>
             </div>
             <p class="preco">R$ 1.499,99</p>
-            <button class="add-cart">Adicionar ao Carrinho</button>
+            <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </article>
 
           <article class="produto-item">
@@ -72,7 +72,7 @@
               <i class="fa-solid fa-star-half"></i>
             </div>
             <p class="preco">R$ 2.299,99</p>
-            <button class="add-cart">Adicionar ao Carrinho</button>
+            <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </article>
 
           <article class="produto-item">
@@ -86,7 +86,7 @@
               <i class="fa-solid fa-star-half"></i>
             </div>
             <p class="preco">R$ 800,00</p>
-            <button class="add-cart">Adicionar ao Carrinho</button>
+            <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </article>
           
           <article class="produto-item">
@@ -100,7 +100,7 @@
               <i class="fa-solid fa-star-half"></i>
             </div>
             <p class="preco">R$ 1.599,99</p>
-            <button class="add-cart">Adicionar ao Carrinho</button>
+            <button type="button" class="add-cart">Adicionar ao Carrinho</button>
           </article>
         </div>
 
@@ -111,6 +111,6 @@
 
   <?php include __DIR__ . '/../includes/footer.php'; ?>
 
-  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/script.js?v=2"></script>
 </body>
 </html>

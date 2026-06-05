@@ -18,6 +18,8 @@ if ($result->num_rows > 0) {
     exit;
 
 } else {
-    echo "Login inválido";
+    // Redirect com parâmetro de erro
+    header("Location: ../../pages/login.php?erro=1");
+    exit();
 }
 ?>

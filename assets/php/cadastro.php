@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             VALUES ('$nome', '$email', '$senha')";
 
     if ($conn->query($sql)) {
-        header("Location: ../../pages/login.html");
+        header("Location: ../../pages/login.php");
         exit;
     } else {
         echo "Erro: " . $conn->error;

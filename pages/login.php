@@ -1,9 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criar conta — BuyNow</title>
+  <title>Entrar — BuyNow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,7 +12,6 @@
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
   <header>
     <nav class="navbar">
       <a href="../index.php" class="logo">
@@ -35,39 +35,29 @@
   <main class="pagina-interna">
     <section class="conteudo-pagina">
       <div class="container auth-box">
-        <h1>Criar conta</h1>
-        <p class="auth-texto">Cadastre-se aqui.</p>
+        <h1>Entrar</h1>
+        <p class="auth-texto">Logue para prosseguir com a compra.</p>
 
-        <form class="auth-form" action="../assets/php/cadastro.php" method="POST">
+        <?php if (isset($_GET['erro']) && $_GET['erro'] === '1'): ?>
+          <div class="auth-erro">Email ou senha incorretos! Tente novamente.</div>
+        <?php endif; ?>
+
+        <form class="auth-form" action="../assets/php/login.php" method="POST">
           <div class="form-group">
-            <label for="cad-nome">Usuario</label>
-            <input type="text" id="cad-nome" name="nome" placeholder="Seu Usuario">
-            <span class="form-error" id="erro-cad-nome"></span>
+            <label for="login-email">E-mail</label>
+            <input type="email" id="login-email" name="email" placeholder="seu@email.com" required>
           </div>
 
           <div class="form-group">
-            <label for="cad-email">E-mail</label>
-            <input type="email" id="cad-email" name="email" placeholder="seu@email.com">
-            <span class="form-error" id="erro-cad-email"></span>
+            <label for="login-senha">Senha</label>
+            <input type="password" id="login-senha" name="senha" placeholder="Sua senha" required>
           </div>
 
-          <div class="form-group">
-            <label for="cad-senha">Senha</label>
-            <input type="password" id="cad-senha" name="senha" placeholder="Mínimo de 4 caracteres">
-            <span class="form-error" id="erro-cad-senha"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="cad-confirma">Confirmar senha</label>
-            <input type="password" id="cad-confirma" name="confirma" placeholder="Repita a senha">
-            <span class="form-error" id="erro-cad-confirma"></span>
-          </div>
-
-          <button type="submit" class="btn-primary btn-full">Criar conta</button>
+          <button type="submit" class="btn-primary btn-full">Entrar</button>
         </form>
 
         <p class="auth-link">
-          Já tem conta? <a href="login.php">Entrar</a>
+          Não tem conta? <a href="cadastro.html">Criar conta</a>
         </p>
       </div>
     </section>
